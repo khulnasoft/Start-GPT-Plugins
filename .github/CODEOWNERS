@@ -1,15 +1,15 @@
-* @Significant-Gravitas/auto-gpt-source @Significant-Gravitas/plugins
-/src/autogpt_plugins/api_tools @sidewaysthought
-/src/autogpt_plugins/astro @sr5434
-/src/autogpt_plugins/baidu_search @ForestLinSen
-/src/autogpt_plugins/bing_search @ForestLinSen
-/src/autogpt_plugins/bluesky @hermanschutte
-/src/autogpt_plugins/email @riensen
-/src/autogpt_plugins/news_search @PalAditya
-/src/autogpt_plugins/random_values @sidewaysthought
-/src/autogpt_plugins/scenex @delgermurun
-/src/autogpt_plugins/telegram @wladastic
-/src/autogpt_plugins/twitter @desojo
-/src/autogpt_plugins/wikipedia_search @pierluigi-failla
-/src/autogpt_plugins/wolframalpha_search @pierluigi-failla
-/src/autogpt_plugins/serpapi @zyc9012
+* @KhulnaSoft/start-gpt-source @KhulnaSoft/plugins
+/src/startgpt_plugins/api_tools @sidewaysthought
+/src/startgpt_plugins/astro @sr5434
+/src/startgpt_plugins/baidu_search @ForestLinSen
+/src/startgpt_plugins/bing_search @ForestLinSen
+/src/startgpt_plugins/bluesky @hermanschutte
+/src/startgpt_plugins/email @riensen
+/src/startgpt_plugins/news_search @PalAditya
+/src/startgpt_plugins/random_values @sidewaysthought
+/src/startgpt_plugins/scenex @delgermurun
+/src/startgpt_plugins/telegram @wladastic
+/src/startgpt_plugins/twitter @desojo
+/src/startgpt_plugins/wikipedia_search @pierluigi-failla
+/src/startgpt_plugins/wolframalpha_search @pierluigi-failla
+/src/startgpt_plugins/serpapi @zyc9012
