@@ -2,8 +2,8 @@
 import os
 from typing import Any, Dict, List, Optional, Tuple, TypedDict, TypeVar
 
-from start_gpt_plugin_template import StartGPTPluginTemplate
 from colorama import Fore
+from start_gpt_plugin_template import StartGPTPluginTemplate
 
 from .scenex_plugin import SceneXplain
 

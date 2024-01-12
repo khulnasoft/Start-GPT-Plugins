@@ -1,8 +1,8 @@
 """This is the email plugin for Start-GPT."""
 from typing import Any, Dict, List, Optional, Tuple, TypedDict, TypeVar
 
-from start_gpt_plugin_template import StartGPTPluginTemplate
 from colorama import Fore
+from start_gpt_plugin_template import StartGPTPluginTemplate
 
 PromptGenerator = TypeVar("PromptGenerator")
 
