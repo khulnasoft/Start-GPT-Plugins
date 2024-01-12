@@ -1,7 +1,7 @@
 """This is a Bluesky plugin for StartGPT using atprototools."""
 from typing import Any, Dict, List, Optional, Tuple, TypedDict, TypeVar
 
-from auto_gpt_plugin_template import StartGPTPluginTemplate
+from start_gpt_plugin_template import StartGPTPluginTemplate
 
 PromptGenerator = TypeVar("PromptGenerator")
 
@@ -40,13 +40,14 @@ class StartGPTBluesky(StartGPTPluginTemplate):
             return prompt
 
         prompt.add_command(
-            "post_to_bluesky", "Post to Bluesky", {
-                "text": "<text>"}, post_message
+            "post_to_bluesky", "Post to Bluesky", {"text": "<text>"}, post_message
         )
         prompt.add_command(
-            "get_bluesky_posts", "Get Blueskey Posts", {
-                "username": "<username>",
-                "number_of_posts": "<number_of_posts>"}, get_latest_posts)
+            "get_bluesky_posts",
+            "Get Blueskey Posts",
+            {"username": "<username>", "number_of_posts": "<number_of_posts>"},
+            get_latest_posts,
+        )
 
         return prompt
 
@@ -221,16 +222,12 @@ class StartGPTBluesky(StartGPTPluginTemplate):
         """
         return None
 
-    def can_handle_text_embedding(
-        self, text: str
-    ) -> bool:
+    def can_handle_text_embedding(self, text: str) -> bool:
         return False
-    
-    def handle_text_embedding(
-        self, text: str
-    ) -> list:
+
+    def handle_text_embedding(self, text: str) -> list:
         pass
-    
+
     def can_handle_user_input(self, user_input: str) -> bool:
         return False
 

@@ -561,5 +561,6 @@ class TestEmailPlugin(unittest.TestCase):
         mock_imap.return_value.search.assert_called_once_with(None, "UNSEEN")
         mock_imap.return_value.fetch.assert_called_once_with(b"1", "(BODY.PEEK[])")
 
+
 if __name__ == "__main__":
     unittest.main()

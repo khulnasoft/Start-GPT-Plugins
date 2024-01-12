@@ -1,7 +1,7 @@
 """This is the email plugin for Start-GPT."""
 from typing import Any, Dict, List, Optional, Tuple, TypedDict, TypeVar
 
-from auto_gpt_plugin_template import StartGPTPluginTemplate
+from start_gpt_plugin_template import StartGPTPluginTemplate
 from colorama import Fore
 
 PromptGenerator = TypeVar("PromptGenerator")
@@ -257,16 +257,12 @@ class StartGPTEmailPlugin(StartGPTPluginTemplate):
         """
         pass
 
-    def can_handle_text_embedding(
-        self, text: str
-    ) -> bool:
+    def can_handle_text_embedding(self, text: str) -> bool:
         return False
-    
-    def handle_text_embedding(
-        self, text: str
-    ) -> list:
+
+    def handle_text_embedding(self, text: str) -> list:
         pass
-    
+
     def can_handle_user_input(self, user_input: str) -> bool:
         return False
 

@@ -2,7 +2,7 @@
 import os
 from typing import Any, Dict, List, Optional, Tuple, TypedDict, TypeVar
 
-from auto_gpt_plugin_template import StartGPTPluginTemplate
+from start_gpt_plugin_template import StartGPTPluginTemplate
 from wolframalpha import Client
 
 PromptGenerator = TypeVar("PromptGenerator")
@@ -22,10 +22,12 @@ class StartGPTWolframAlphaSearch(StartGPTPluginTemplate):
         super().__init__()
         self._name = "startgpt-wolframalpha-search"
         self._version = "0.1.0"
-        self._description = ("WolframAlpha is an answer engine, it answers "
-                             "factual queries by computing answers from "
-                             "externally sourced data. It can provide answers "
-                             "to math, data and science queries.")
+        self._description = (
+            "WolframAlpha is an answer engine, it answers "
+            "factual queries by computing answers from "
+            "externally sourced data. It can provide answers "
+            "to math, data and science queries."
+        )
         self.wolframalpha_appid = os.getenv("WOLFRAMALPHA_APPID")
 
         self.api = None
@@ -60,7 +62,7 @@ class StartGPTWolframAlphaSearch(StartGPTPluginTemplate):
         return False
 
     def on_planning(
-            self, prompt: PromptGenerator, messages: List[str]
+        self, prompt: PromptGenerator, messages: List[str]
     ) -> Optional[str]:
         """This method is called before the planning chat completeion is done.
         Args:
@@ -141,7 +143,7 @@ class StartGPTWolframAlphaSearch(StartGPTPluginTemplate):
         return False
 
     def pre_command(
-            self, command_name: str, arguments: Dict[str, Any]
+        self, command_name: str, arguments: Dict[str, Any]
     ) -> Tuple[str, Dict[str, Any]]:
         """This method is called before the command is executed.
         Args:
@@ -170,11 +172,11 @@ class StartGPTWolframAlphaSearch(StartGPTPluginTemplate):
         pass
 
     def can_handle_chat_completion(
-            self,
-            messages: list[Dict[Any, Any]],
-            model: str,
-            temperature: float,
-            max_tokens: int,
+        self,
+        messages: list[Dict[Any, Any]],
+        model: str,
+        temperature: float,
+        max_tokens: int,
     ) -> bool:
         """This method is called to check that the plugin can
         handle the chat_completion method.
@@ -188,11 +190,11 @@ class StartGPTWolframAlphaSearch(StartGPTPluginTemplate):
         return False
 
     def handle_chat_completion(
-            self,
-            messages: list[Dict[Any, Any]],
-            model: str,
-            temperature: float,
-            max_tokens: int,
+        self,
+        messages: list[Dict[Any, Any]],
+        model: str,
+        temperature: float,
+        max_tokens: int,
     ) -> str:
         """This method is called when the chat completion is done.
         Args:
@@ -215,6 +217,7 @@ class StartGPTWolframAlphaSearch(StartGPTPluginTemplate):
         """
         if self.api:
             from .wolframalpha_search import _wolframalpha_search
+
             prompt.add_command(
                 "wolframalpha_search",
                 self._description,
@@ -223,16 +226,12 @@ class StartGPTWolframAlphaSearch(StartGPTPluginTemplate):
             )
         return prompt
 
-    def can_handle_text_embedding(
-        self, text: str
-    ) -> bool:
+    def can_handle_text_embedding(self, text: str) -> bool:
         return False
-    
-    def handle_text_embedding(
-        self, text: str
-    ) -> list:
+
+    def handle_text_embedding(self, text: str) -> list:
         pass
-    
+
     def can_handle_user_input(self, user_input: str) -> bool:
         return False
 

@@ -136,7 +136,7 @@ Experience the plugin's capabilities by testing it for sending and receiving ema
    Compose an email with a simple question from a [trash-mail.com](https://www.trash-mail.com/) email address to your configured `EMAIL_ADDRESS` in your `.env` file.
 
 2. **Place attachment in Start-GPT workspace folder**
-   Insert the attachment intended for sending into the Start-GPT workspace folder, typically named auto_gpt_workspace, which is located within the cloned [Start-GPT](https://github.com/KhulnaSoft/Start-GPT) Github repository.
+   Insert the attachment intended for sending into the Start-GPT workspace folder, typically named start_gpt_workspace, which is located within the cloned [Start-GPT](https://github.com/KhulnaSoft/Start-GPT) Github repository.
 
 3. **Configure Start-GPT:**
    Set up Start-GPT with the following parameters:

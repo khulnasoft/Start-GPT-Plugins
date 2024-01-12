@@ -6,7 +6,11 @@ from atproto import Client
 
 
 def username_and_pwd_set() -> bool:
-    return True if os.getenv("BLUESKY_USERNAME") and os.getenv("BLUESKY_APP_PASSWORD") else False
+    return (
+        True
+        if os.getenv("BLUESKY_USERNAME") and os.getenv("BLUESKY_APP_PASSWORD")
+        else False
+    )
 
 
 def post_message(text: str) -> str:
@@ -52,7 +56,8 @@ def get_latest_posts(username: str, number_of_posts=5) -> str | None:
     try:
         client.login(bluesky_username, bluesky_app_password)
         profile_feed = client.bsky.feed.get_author_feed(
-            {'actor': username, 'limit': number_of_posts})
+            {"actor": username, "limit": number_of_posts}
+        )
     except Exception as e:
         return f"Error! Message: {e}"
 
@@ -60,8 +65,16 @@ def get_latest_posts(username: str, number_of_posts=5) -> str | None:
     posts = []
 
     for feed in profile_feed.feed:
-        posts.append([feed.post.uri, feed.post.record.text, feed.post.record.createdAt,
-                      feed.post.author.handle, feed.post.likeCount, feed.post.replyCount])
+        posts.append(
+            [
+                feed.post.uri,
+                feed.post.record.text,
+                feed.post.record.createdAt,
+                feed.post.author.handle,
+                feed.post.likeCount,
+                feed.post.replyCount,
+            ]
+        )
 
     df = str(pd.DataFrame(posts, columns=columns))
 

@@ -2,7 +2,7 @@
 import os
 from typing import Any, Dict, List, Optional, Tuple, TypedDict, TypeVar
 
-from auto_gpt_plugin_template import StartGPTPluginTemplate
+from start_gpt_plugin_template import StartGPTPluginTemplate
 
 from .serpapi_search import serpapi_search
 
@@ -22,9 +22,7 @@ class StartGPTSerpApiSearch(StartGPTPluginTemplate):
         self._description = (
             "This plugin performs SerpApi searches using the provided query."
         )
-        self.load_commands = (
-            os.getenv("SERPAPI_API_KEY")
-        )
+        self.load_commands = os.getenv("SERPAPI_API_KEY")
 
     def can_handle_post_prompt(self) -> bool:
         return True
@@ -99,7 +97,7 @@ class StartGPTSerpApiSearch(StartGPTPluginTemplate):
 
     def post_instruction(self, response: str) -> str:
         pass
-    
+
     def can_handle_chat_completion(
         self, messages: Dict[Any, Any], model: str, temperature: float, max_tokens: int
     ) -> bool:
@@ -109,17 +107,13 @@ class StartGPTSerpApiSearch(StartGPTPluginTemplate):
         self, messages: List[Message], model: str, temperature: float, max_tokens: int
     ) -> str:
         pass
-    
-    def can_handle_text_embedding(
-        self, text: str
-    ) -> bool:
+
+    def can_handle_text_embedding(self, text: str) -> bool:
         return False
-    
-    def handle_text_embedding(
-        self, text: str
-    ) -> list:
+
+    def handle_text_embedding(self, text: str) -> list:
         pass
-    
+
     def can_handle_user_input(self, user_input: str) -> bool:
         return False
 

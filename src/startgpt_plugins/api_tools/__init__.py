@@ -2,7 +2,8 @@
 
 from typing import Any, Dict, List, Optional, Tuple, TypedDict, TypeVar
 
-from auto_gpt_plugin_template import StartGPTPluginTemplate
+from start_gpt_plugin_template import StartGPTPluginTemplate
+
 try:
     from .api_tools import ApiCallCommand
 except ImportError:
@@ -11,10 +12,13 @@ except ImportError:
 
 PromptGenerator = TypeVar("PromptGenerator")
 
+
 class Message(TypedDict):
     """Message type."""
+
     role: str
     content: str
+
 
 class StartGPTApiTools(StartGPTPluginTemplate):
     """
@@ -55,7 +59,7 @@ class StartGPTApiTools(StartGPTPluginTemplate):
         return False
 
     def on_planning(
-            self, prompt: PromptGenerator, messages: List[str]
+        self, prompt: PromptGenerator, messages: List[str]
     ) -> Optional[str]:
         """This method is called before the planning chat completeion is done.
         Args:
@@ -134,7 +138,7 @@ class StartGPTApiTools(StartGPTPluginTemplate):
         return False
 
     def pre_command(
-            self, command_name: str, arguments: Dict[str, Any]
+        self, command_name: str, arguments: Dict[str, Any]
     ) -> Tuple[str, Dict[str, Any]]:
         """This method is called before the command is executed.
         Args:
@@ -160,14 +164,14 @@ class StartGPTApiTools(StartGPTPluginTemplate):
         Returns:
             str: The resulting response.
         """
-        return ''
+        return ""
 
     def can_handle_chat_completion(
-            self,
-            messages: list[Dict[Any, Any]],
-            model: str,
-            temperature: float,
-            max_tokens: int,
+        self,
+        messages: list[Dict[Any, Any]],
+        model: str,
+        temperature: float,
+        max_tokens: int,
     ) -> bool:
         """This method is called to check that the plugin can
         handle the chat_completion method.
@@ -181,11 +185,11 @@ class StartGPTApiTools(StartGPTPluginTemplate):
         return False
 
     def handle_chat_completion(
-            self,
-            messages: list[Dict[Any, Any]],
-            model: str,
-            temperature: float,
-            max_tokens: int,
+        self,
+        messages: list[Dict[Any, Any]],
+        model: str,
+        temperature: float,
+        max_tokens: int,
     ) -> str:
         """This method is called when the chat completion is done.
         Args:
@@ -196,7 +200,7 @@ class StartGPTApiTools(StartGPTPluginTemplate):
         Returns:
             str: The resulting response.
         """
-        return ''
+        return ""
 
     def post_prompt(self, prompt: PromptGenerator) -> PromptGenerator:
         """This method is called just after the generate_prompt is called,
@@ -207,28 +211,36 @@ class StartGPTApiTools(StartGPTPluginTemplate):
             PromptGenerator: The prompt generator.
         """
 
-        prompt.add_command( # type: ignore
+        prompt.add_command(  # type: ignore
             "api",
             "API Call",
-            {"host": "<str>", "endpoint": "<str>", "mthd": "<str>", "params": "<dict>", "body": "<str>", "hdrs": "<dict>", "timeout": "<int>"},
-            self.plugin_class.make_api_call
+            {
+                "host": "<str>",
+                "endpoint": "<str>",
+                "mthd": "<str>",
+                "params": "<dict>",
+                "body": "<str>",
+                "hdrs": "<dict>",
+                "timeout": "<int>",
+            },
+            self.plugin_class.make_api_call,
         )
         return prompt
-    
+
     def can_handle_user_input(self, user_input: str) -> bool:
         return False
-    
+
     def user_input(self, user_input: str) -> str:
         return user_input
-    
+
     def can_handle_report(self) -> bool:
         return False
-    
+
     def report(self, message: str) -> None:
         pass
 
     def can_handle_text_embedding(self, text: str) -> bool:
         return False
-    
+
     def handle_text_embedding(self, text: str) -> list:  # type: ignore
         pass

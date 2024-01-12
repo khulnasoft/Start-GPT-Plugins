@@ -9,14 +9,16 @@ import lorem
 
 """Random Number function for Startgpt."""
 
+
 class RandomValues:
     """Random Values plugin for Start-GPT."""
 
     def __init__(self, plugin):
         self.plugin = plugin
 
-
-    def random_number(self, min:int|str = 0, max:int|str = 65535, cnt:int|str = 1) -> str:
+    def random_number(
+        self, min: int | str = 0, max: int | str = 65535, cnt: int | str = 1
+    ) -> str:
         """
         Return a random integer between min and max
 
@@ -47,7 +49,7 @@ class RandomValues:
         # Ensure min is less than max
         if min > max:
             min, max = max, min
-        
+
         # Test ranges
         if not (1 <= cnt <= 65535):
             raise ValueError("cnt must be between 1 and 65535")
@@ -55,7 +57,7 @@ class RandomValues:
             raise ValueError("min must be between 0 and 65535")
         if not (0 <= max <= 65535):
             raise ValueError("max must be between 0 and 65535")
-        
+
         # Make random numbers
         random_numbers = []
         if isinstance(min, int) and isinstance(max, int):
@@ -69,8 +71,7 @@ class RandomValues:
 
     # End of random_number()
 
-
-    def make_uuids(self, cnt:int|str = 1) -> str:
+    def make_uuids(self, cnt: int | str = 1) -> str:
         """
         Return a UUID
 
@@ -102,15 +103,14 @@ class RandomValues:
 
     # End of make_uuids()
 
-
-    def generate_string(self, len:int|str = 10, cnt:int|str = 1) -> str:
+    def generate_string(self, len: int | str = 10, cnt: int | str = 1) -> str:
         """
         Return a random string
 
         Args:
             len (int): The length of the string
             cnt (int): The number of strings to return
-            
+
         Returns:
             str: a json array with 1 to "count" strings of "length" length
             ["<string>"]
@@ -143,15 +143,14 @@ class RandomValues:
 
         return json.dumps(strings)
 
-
-    def generate_password(self, len:int|str = 16, cnt:int|str = 1) -> str:
+    def generate_password(self, len: int | str = 16, cnt: int | str = 1) -> str:
         """
         Return a random password of letters, numbers, and punctuation
 
         Args:
             len (int): The length of the password
             cnt (int): The number of passwords to return
-                    
+
         Returns:
             str: a json array with 1 to "count" passwords of "length" length
             ["<password>"]
@@ -180,15 +179,16 @@ class RandomValues:
         for _ in range(cnt):
             passwords.append(
                 "".join(
-                    random.choice(string.ascii_letters + string.digits + string.punctuation)
+                    random.choice(
+                        string.ascii_letters + string.digits + string.punctuation
+                    )
                     for i in range(len)
                 )
             )
 
         return json.dumps(passwords)
 
-
-    def generate_placeholder_text(self, cnt:int|str = 1) -> str:
+    def generate_placeholder_text(self, cnt: int | str = 1) -> str:
         """
         Return a random sentence of lorem ipsum text
 

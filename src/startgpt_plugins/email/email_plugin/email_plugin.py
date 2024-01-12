@@ -105,8 +105,11 @@ def send_email_with_attachment_internal(
 
 
 def read_emails(
-        imap_folder: str = "inbox", imap_search_command: str = "UNSEEN", limit: int = 5,
-        page: int = 1) -> str:
+    imap_folder: str = "inbox",
+    imap_search_command: str = "UNSEEN",
+    limit: int = 5,
+    page: int = 1,
+) -> str:
     """Read emails from an IMAP mailbox.
 
     This function reads emails from a specified IMAP folder, using a given IMAP search command, limits, and page numbers.
@@ -151,14 +154,13 @@ def read_emails(
         for response_part in msg_data:
             if isinstance(response_part, tuple):
                 msg = email.message_from_bytes(response_part[1])
-                
+
                 # If the subject has unknown encoding, return blank
                 if msg["Subject"] is not None:
                     subject, encoding = decode_header(msg["Subject"])[0]
                 else:
                     subject = ""
                     encoding = ""
-
 
                 if isinstance(subject, bytes):
                     try:
@@ -208,7 +210,9 @@ def read_emails(
     page_count = len(messages) // limit + (len(messages) % limit > 0)
 
     if page < 1 or page > page_count:
-        raise ValueError("Error: The page value references a page that is not part of the results")
+        raise ValueError(
+            "Error: The page value references a page that is not part of the results"
+        )
 
     # Calculate paginated indexes
     start_index = len(messages) - (page * limit + 1)
@@ -259,6 +263,7 @@ def get_email_body(msg: email.message.Message) -> str:
         except UnicodeDecodeError as e:
             pass
 
+
 def enclose_with_quotes(s):
     # Check if string contains whitespace
     has_whitespace = bool(re.search(r"\s", s))
@@ -280,6 +285,7 @@ def split_imap_search_command(input_string):
 
     return parts
 
+
 def clean_email_body(email_body):
     """Remove formating and URL's from an email's body
 
@@ -291,7 +297,8 @@ def clean_email_body(email_body):
     """
 
     # If body is None, return an empty string
-    if email_body is None: email_body = ""
+    if email_body is None:
+        email_body = ""
 
     # Remove any HTML tags
     email_body = BeautifulSoup(email_body, "html.parser")

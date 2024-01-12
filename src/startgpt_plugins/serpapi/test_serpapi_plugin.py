@@ -6,7 +6,7 @@ import requests
 import requests_mock
 
 from . import StartGPTSerpApiSearch
-from .serpapi_search import serpapi_search, _filter_results, _get_params
+from .serpapi_search import _filter_results, _get_params, serpapi_search
 
 
 class TestStartGPTSerpApiSearch(unittest.TestCase):

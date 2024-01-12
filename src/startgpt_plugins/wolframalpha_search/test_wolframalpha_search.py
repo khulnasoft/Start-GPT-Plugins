@@ -18,6 +18,7 @@ class TestStartGPTWolframAlphaSearch(unittest.TestCase):
         query = "2+2"
         try:
             from .wolframalpha_search import _wolframalpha_search
+
             _wolframalpha_search(query)
         except requests.exceptions.HTTPError as e:
             self.assertEqual(e.response.status_code, 401)
