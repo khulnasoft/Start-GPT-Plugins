@@ -2,7 +2,7 @@
 import os
 from typing import Any, Dict, List, Optional, Tuple, TypedDict, TypeVar
 
-from auto_gpt_plugin_template import StartGPTPluginTemplate
+from start_gpt_plugin_template import StartGPTPluginTemplate
 
 PromptGenerator = TypeVar("PromptGenerator")
 

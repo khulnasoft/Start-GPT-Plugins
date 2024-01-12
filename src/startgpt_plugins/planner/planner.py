@@ -6,7 +6,7 @@ def check_plan():
     """this function checks if the file plan.md exists, if it doesn't exist it gets created"""
 
     current_working_directory = os.getcwd()
-    workdir = os.path.join(current_working_directory, "auto_gpt_workspace", "plan.md")
+    workdir = os.path.join(current_working_directory, "start_gpt_workspace", "plan.md")
 
     file_name = workdir
 
@@ -32,7 +32,7 @@ def update_plan():
     """this function checks if the file plan.md exists, if it doesn't exist it gets created"""
 
     current_working_directory = os.getcwd()
-    workdir = os.path.join(current_working_directory, "auto_gpt_workspace", "plan.md")
+    workdir = os.path.join(current_working_directory, "start_gpt_workspace", "plan.md")
 
     file_name = workdir
 
@@ -92,7 +92,7 @@ def create_task(task_id=None, task_description: str = None, status=False):
 
     current_working_directory = os.getcwd()
     workdir = os.path.join(
-        current_working_directory, "auto_gpt_workspace", "tasks.json"
+        current_working_directory, "start_gpt_workspace", "tasks.json"
     )
     file_name = workdir
 
@@ -105,7 +105,7 @@ def create_task(task_id=None, task_description: str = None, status=False):
 def load_tasks() -> dict:
     current_working_directory = os.getcwd()
     workdir = os.path.join(
-        current_working_directory, "auto_gpt_workspace", "tasks.json"
+        current_working_directory, "start_gpt_workspace", "tasks.json"
     )
     file_name = workdir
 
@@ -135,7 +135,7 @@ def update_task_status(task_id):
 
     current_working_directory = os.getcwd()
     workdir = os.path.join(
-        current_working_directory, "auto_gpt_workspace", "tasks.json"
+        current_working_directory, "start_gpt_workspace", "tasks.json"
     )
     file_name = workdir
 

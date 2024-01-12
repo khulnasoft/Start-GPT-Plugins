@@ -231,7 +231,7 @@ We appreciate your contribution of a plugin to the project!
 
 1. Clone this repository.
 1. Make a folder for your plugin under `src/startgpt_plugins`. Use a simple descriptive name such as `notion`, `twitter`, or `web_ui`.
-1. Add the files from your third-party plugin located at `src/auto_gpt_plugin_template` into the folder you created.
+1. Add the files from your third-party plugin located at `src/start_gpt_plugin_template` into the folder you created.
 1. Include your README from your third-party plugin in the folder you created.
 1. Add your plugin to the root README with a description and a link to your plugin-specific README.
 1. Add your plugin's Python package requirements to `requirements.txt`.
