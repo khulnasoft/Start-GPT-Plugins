@@ -239,16 +239,12 @@ class StartGPTSceneXPlugin(StartGPTPluginTemplate):
         """
         pass
 
-    def can_handle_text_embedding(
-        self, text: str
-    ) -> bool:
+    def can_handle_text_embedding(self, text: str) -> bool:
         return False
-    
-    def handle_text_embedding(
-        self, text: str
-    ) -> list:
+
+    def handle_text_embedding(self, text: str) -> list:
         pass
-    
+
     def can_handle_user_input(self, user_input: str) -> bool:
         return False
 

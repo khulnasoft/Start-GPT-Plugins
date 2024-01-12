@@ -1,11 +1,13 @@
 import json
 import string
-from unittest.mock import Mock
 from unittest import TestCase
+from unittest.mock import Mock
+
 try:
     from .random_values import RandomValues
 except ImportError:
     from random_values import RandomValues
+
 
 class TestRandomValueCommands(TestCase):
     # _random_number Tests
@@ -20,7 +22,9 @@ class TestRandomValueCommands(TestCase):
             self.assertTrue(10 <= num <= 20)
 
     def test_random_number_using_strings(self):
-        result = json.loads(self.random_values.random_number(min="10", max="20", cnt="5"))
+        result = json.loads(
+            self.random_values.random_number(min="10", max="20", cnt="5")
+        )
         self.assertEqual(len(result), 5)
         for num in result:
             self.assertTrue(10 <= num <= 20)

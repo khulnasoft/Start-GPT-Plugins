@@ -241,10 +241,10 @@ class StartGPTTelegram(StartGPTPluginTemplate):
 
     def can_handle_text_embedding(self, text: str) -> bool:
         return False
-    
+
     def handle_text_embedding(self, text: str) -> list:
         pass
-    
+
     def can_handle_user_input(self, user_input: str) -> bool:
         return True
 
@@ -257,7 +257,7 @@ class StartGPTTelegram(StartGPTPluginTemplate):
             print(e)
             print("Error sending message to telegram")
             return "s"
-        
+
     def can_handle_report(self) -> bool:
         """This method is called to check that the plugin can
         handle the report method.
@@ -269,12 +269,11 @@ class StartGPTTelegram(StartGPTPluginTemplate):
     def report(self, message: str) -> None:
         message = remove_color_codes(message)
         # if the message is too long, shorten it
-        try :
+        try:
             self.telegram_utils.send_message(message=message)
         except Exception as e:
             print(e)
             print("Error sending message to telegram")
-            
 
     def can_handle_text_embedding(self, text: str) -> bool:
         return False

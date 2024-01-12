@@ -6,9 +6,7 @@ def check_plan():
     """this function checks if the file plan.md exists, if it doesn't exist it gets created"""
 
     current_working_directory = os.getcwd()
-    workdir = os.path.join(
-        current_working_directory, "auto_gpt_workspace", "plan.md"
-    )
+    workdir = os.path.join(current_working_directory, "auto_gpt_workspace", "plan.md")
 
     file_name = workdir
 
@@ -34,11 +32,11 @@ def update_plan():
     """this function checks if the file plan.md exists, if it doesn't exist it gets created"""
 
     current_working_directory = os.getcwd()
-    workdir = os.path.join(current_working_directory, 'auto_gpt_workspace', 'plan.md')
+    workdir = os.path.join(current_working_directory, "auto_gpt_workspace", "plan.md")
 
     file_name = workdir
 
-    with open(file_name, 'r') as file:
+    with open(file_name, "r") as file:
         data = file.read()
 
     response = generate_improved_plan(data)
@@ -57,9 +55,9 @@ def generate_improved_plan(prompt: str) -> str:
 
     tasks = load_tasks()
 
-    model = os.getenv('PLANNER_MODEL', os.getenv('FAST_LLM_MODEL', 'gpt-3.5-turbo'))
-    max_tokens = os.getenv('PLANNER_TOKEN_LIMIT', os.getenv('FAST_TOKEN_LIMIT', 1500))
-    temperature = os.getenv('PLANNER_TEMPERATURE', os.getenv('TEMPERATURE', 0.5))
+    model = os.getenv("PLANNER_MODEL", os.getenv("FAST_LLM_MODEL", "gpt-3.5-turbo"))
+    max_tokens = os.getenv("PLANNER_TOKEN_LIMIT", os.getenv("FAST_TOKEN_LIMIT", 1500))
+    temperature = os.getenv("PLANNER_TEMPERATURE", os.getenv("TEMPERATURE", 0.5))
 
     # Call the OpenAI API for chat completion
     response = openai.ChatCompletion.create(
@@ -72,9 +70,9 @@ def generate_improved_plan(prompt: str) -> str:
             {
                 "role": "user",
                 "content": f"Update the following plan given the task status below, keep the .md format:\n{prompt}\n"
-                           f"Include the current tasks in the improved plan, keep mind of their status and track them "
-                           f"with a checklist:\n{tasks}\n Revised version should comply with the contents of the "
-                           f"tasks at hand:",
+                f"Include the current tasks in the improved plan, keep mind of their status and track them "
+                f"with a checklist:\n{tasks}\n Revised version should comply with the contents of the "
+                f"tasks at hand:",
             },
         ],
         max_tokens=int(max_tokens),

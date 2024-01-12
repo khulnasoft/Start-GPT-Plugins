@@ -1,12 +1,15 @@
 """Random Values commands."""
 from typing import Any, Dict, List, Optional, Tuple, TypedDict, TypeVar
+
 from auto_gpt_plugin_template import StartGPTPluginTemplate
+
 try:
     from .random_values import RandomValues
 except ImportError:
     from random_values import RandomValues
 
 PromptGenerator = TypeVar("PromptGenerator")
+
 
 class Message(TypedDict):
     role: str
@@ -194,7 +197,7 @@ class StartGPTRandomValues(StartGPTPluginTemplate):
         Returns:
             str: The resulting response.
         """
-        return ''
+        return ""
 
     def post_prompt(self, prompt: PromptGenerator) -> PromptGenerator:
         """This method is called just after the generate_prompt is called,
@@ -212,10 +215,7 @@ class StartGPTRandomValues(StartGPTPluginTemplate):
             self.plugin_class.random_number,
         )
         prompt.add_command(  # type: ignore
-            "uuids", 
-            "Make UUIDs", 
-            {"cnt": "<int>"}, 
-            self.plugin_class.make_uuids
+            "uuids", "Make UUIDs", {"cnt": "<int>"}, self.plugin_class.make_uuids
         )
         prompt.add_command(  # type: ignore
             "make_str",
@@ -223,34 +223,34 @@ class StartGPTRandomValues(StartGPTPluginTemplate):
             {"len": "<int>", "cnt": "<int>"},
             self.plugin_class.generate_string,
         )
-        prompt.add_command( # type: ignore
+        prompt.add_command(  # type: ignore
             "pwds",
             "Create Passwords",
             {"len": "<int>", "cnt": "<int>"},
             self.plugin_class.generate_password,
         )
-        prompt.add_command( # type: ignore
+        prompt.add_command(  # type: ignore
             "lorem_ipsum",
             "Create Lorem Sentences",
             {"cnt": "<int>"},
             self.plugin_class.generate_placeholder_text,
         )
         return prompt
-     
+
     def can_handle_text_embedding(self, text: str) -> bool:  # type: ignore
         return False
-    
+
     def handle_text_embedding(self, text: str) -> list:  # type: ignore
         pass
 
     def can_handle_user_input(self, user_input: str) -> bool:
-            return False
-    
+        return False
+
     def user_input(self, user_input: str) -> str:
         return user_input
-    
+
     def can_handle_report(self) -> bool:
         return False
-    
+
     def report(self, message: str) -> None:
         pass

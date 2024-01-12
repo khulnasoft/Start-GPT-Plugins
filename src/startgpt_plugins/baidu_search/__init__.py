@@ -101,7 +101,7 @@ class StartGPTBaiduSearch(StartGPTPluginTemplate):
 
     def post_instruction(self, response: str) -> str:
         pass
-    
+
     def can_handle_chat_completion(
         self, messages: Dict[Any, Any], model: str, temperature: float, max_tokens: int
     ) -> bool:
@@ -111,17 +111,13 @@ class StartGPTBaiduSearch(StartGPTPluginTemplate):
         self, messages: List[Message], model: str, temperature: float, max_tokens: int
     ) -> str:
         pass
-    
-    def can_handle_text_embedding(
-        self, text: str
-    ) -> bool:
+
+    def can_handle_text_embedding(self, text: str) -> bool:
         return False
-    
-    def handle_text_embedding(
-        self, text: str
-    ) -> list:
+
+    def handle_text_embedding(self, text: str) -> list:
         pass
-    
+
     def can_handle_user_input(self, user_input: str) -> bool:
         return False
 
